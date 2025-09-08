@@ -1,11 +1,9 @@
 .grid-container {
-  max-width: 960px;
-  min-width: 960px;
-  min-height: 960px;
-  max-height: 960px;
+  min-height: 560px;
+  max-height: 560px;
 
-  width: 960px;
-  height: 960px;
+  width: 560px;
+  height: 560px;
 
   background-color: rgb(255, 126, 225);
 
@@ -14,7 +12,7 @@
   flex-wrap: wrap;
 }
 
-.square {
+.row {
   flex: 1 1 0;
 
   display: flex;
@@ -29,6 +27,6 @@
 
 .cell {
   flex: 1 1 0;
-  border: 2px solid black;
+  border: 1px solid black;
   background-color: rgb(137, 36, 113);
 }
