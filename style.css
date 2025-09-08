@@ -1,9 +1,9 @@
 .grid-container {
-  min-height: 560px;
-  max-height: 560px;
+  min-height: 660px;
+  max-height: 660px;
 
-  width: 560px;
-  height: 560px;
+  width: 660px;
+  height: 660px;
 
   background-color: rgb(255, 126, 225);
 

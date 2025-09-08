@@ -7,6 +7,7 @@ makeGrid(16);
 
 let sizeOfGrid = 16;
 
+//When user moves the slider, the grid size moves to its respective size.
 sizeSlider.addEventListener("mousedown", (event) => {
   let target = event.target;
 
@@ -45,6 +46,9 @@ function makeGrid(size) {
       const cell = document.createElement("div");
       cell.setAttribute("class", "cell");
       currRow.appendChild(cell);
+
+      //Adds events to each individual cell.
+      addCellEvents(cell);
     }
   }
 }
@@ -55,4 +59,13 @@ function removeGrid() {
   for (let row of allRows) {
     row.remove();
   }
+}
+
+function addCellEvents(cell) {
+  cell.addEventListener("mouseover", (event) => {
+    let target = event.target;
+
+    target.style["background-color"] = "black";
+    console.log(target);
+  });
 }
