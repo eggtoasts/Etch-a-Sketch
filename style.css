@@ -28,5 +28,9 @@
 .cell {
   flex: 1 1 0;
   border: 1px solid black;
-  background-color: rgb(137, 36, 113);
+  background-color: rgb(255, 201, 242);
+}
+
+.slider {
+  width: 500px;
 }
