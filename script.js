@@ -15,6 +15,8 @@ const yellow = "rgb(255, 225, 53)";
 const purple = "rgb(215, 53, 255)";
 const black = "black";
 const erase = "white";
+const rainbow = "rainbow";
+const fade = "fade";
 
 //Default size.
 makeGrid(16);
@@ -37,35 +39,7 @@ for (let color of colorOptions) {
     let selectedColor = event.target.id;
     console.log(selectedColor);
 
-    switch (selectedColor) {
-      case `black`:
-        currentColor = "black";
-        break;
-      case `red`:
-        currentColor = "red";
-        break;
-      case `yellow`:
-        currentColor = "yellow";
-        break;
-      case `orange`:
-        currentColor = "orange";
-        break;
-      case `green`:
-        currentColor = "green";
-        break;
-      case `blue`:
-        currentColor = "blue";
-        break;
-      case `purple`:
-        currentColor = "purple";
-        break;
-      case `rainbow`:
-        currentColor = "rainbow";
-        break;
-      case `fade`:
-        currentColor = "fade";
-        break;
-    }
+    currentColor = selectedColor;
   });
 }
 
@@ -197,7 +171,7 @@ function addCellEvents(cell) {
           });`;
         }
       }
-    } else if (currentColor == "erase") {
+    } else {
       target.style["background-color"] = erase;
     }
   });
