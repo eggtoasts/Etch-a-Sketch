@@ -3,6 +3,7 @@ const sizeSlider = document.querySelector(".slider");
 const sizeOfGridText = document.querySelector(".grid-size-text");
 const colorPicker = document.querySelector(".color-picker");
 const resetButton = document.querySelector(".reset-button");
+const eraseButton = document.querySelector(".erase-button");
 
 let canDraw = true;
 
@@ -70,6 +71,10 @@ for (let color of colorOptions) {
 
 resetButton.addEventListener("click", (event) => {
   makeGrid(sizeOfGrid);
+});
+
+eraseButton.addEventListener("click", (event) => {
+  currentColor = "erase";
 });
 
 colorPicker.addEventListener("hover", (event) => {
@@ -192,6 +197,8 @@ function addCellEvents(cell) {
           });`;
         }
       }
+    } else if (currentColor == "erase") {
+      target.style["background-color"] = erase;
     }
   });
 }
