@@ -46,6 +46,9 @@ for (let color of colorOptions) {
       case `rainbow`:
         currentColor = "rainbow";
         break;
+      case `fade`:
+        currentColor = "fade";
+        break;
     }
 
     // switch ()
@@ -97,6 +100,7 @@ function makeGrid(size) {
     for (let k = 0; k < size; k++) {
       const cell = document.createElement("div");
       cell.setAttribute("class", "cell");
+      cell.style["background-color"] = "white";
       currRow.appendChild(cell);
 
       //Adds events to each individual cell.
@@ -127,8 +131,39 @@ function addCellEvents(cell) {
       target.style["background-color"] = blue;
     } else if (currentColor == "green") {
       target.style["background-color"] = green;
+    } else if (currentColor == "green") {
+      target.style["background-color"] = green;
+    } else if (currentColor == "rainbow") {
+      //random rainbow color!
+      const a = randomColor(),
+        b = randomColor(),
+        c = randomColor();
+      const randomRGB = `rgb(${a},${b},${c})`;
+
+      target.style["background-color"] = randomRGB;
+    } else if (currentColor == "fade") {
+      let curr = target.style["background-color"];
+
+      let opacity = curr.split(" ")[3];
+
+      if (curr == "white" || opacity == null) {
+        console.log("CURR IS " + curr + "\n");
+        target.style.cssText = ` background-color:rgba(0, 0, 0, ${0.1});`;
+      } else {
+        opacity = opacity.substring(0, 3);
+        console.log(opacity);
+        if (opacity < 0.9) {
+          target.style.cssText = ` background-color:rgba(0, 0, 0, ${
+            Number(opacity) + 0.1
+          });`;
+        }
+      }
     }
 
     // console.log(target);
   });
+}
+
+function randomColor() {
+  return Math.random() * (255 - 20) + 20;
 }
