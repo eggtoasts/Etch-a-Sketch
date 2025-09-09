@@ -20,18 +20,51 @@
   align-self: center;
 }
 
-.color-picker {
-  background-color: rgb(33, 183, 91);
+.title-box {
+  flex: 1;
+  margin-right: 20px;
+  align-self: center;
+  font-size: 30px;
+  margin-right: 40px;
+  min-width: 200px;
+}
 
-  max-width: 240px;
+.color-picker,
+.tool-box,
+.title-box {
+  background-color: rgb(255, 255, 255);
+}
+
+.color-picker {
+  max-width: 100px;
   max-height: 660px;
 
-  width: 240px;
+  width: 100px;
   height: 660px;
 
   border-radius: 25px;
-
   display: flex;
+}
+
+.tool-box {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex-direction: row;
+  margin-bottom: 10px;
+  border-radius: 25px;
+
+  max-width: 780px;
+
+  margin-bottom: 20px;
+}
+
+.color-container {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .color {
@@ -42,14 +75,34 @@
   height: 60px;
 
   border-radius: 25px;
+
+  overflow: hidden;
+
+  transition-duration: 0.4s;
+}
+.color:hover,
+.reset-button:hover {
+  transform: scale(1.1);
 }
 
 #red {
   background-color: rgb(255, 78, 78);
 }
 
+#orange {
+  background-color: rgb(255, 137, 53);
+}
+
+#yellow {
+  background-color: rgb(255, 225, 53);
+}
+
 #green {
   background-color: rgb(79, 255, 77);
+}
+
+#purple {
+  background-color: rgb(215, 53, 255);
 }
 
 #blue {
@@ -68,6 +121,32 @@
   background-color: rgb(144, 102, 102);
 }
 
+div {
+  /* border: 3px solid red; */
+}
+
+.main-box {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  flex: 0;
+}
+
+.reset-button {
+  min-width: 70px;
+  min-height: 60px;
+  color: white;
+  background-color: rgb(255, 63, 63);
+  border-radius: 65px;
+  border: 3px solid rgb(173, 31, 31);
+  margin-left: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  align-self: center;
+
+  transition-duration: 0.4s;
+}
+
 .row {
   flex: 1 1 0;
 
@@ -77,12 +156,21 @@
 
 .cell {
   flex: 1 1 0;
-  border: 0.1px solid rgb(134, 134, 134);
+  border: 0.1px solid rgba(134, 134, 134, 0.379);
   background-color: rgb(255, 255, 255);
 }
 
+img {
+  object-fit: cover;
+  width: 60px;
+
+  /* width: 190px; */
+  height: 70px;
+}
+
 .slider {
-  width: 500px;
+  width: 650px;
+  margin: 20px;
 }
 
 * {
@@ -96,4 +184,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 35px;
+  background-color: rgb(97, 181, 255);
+}
+
+p {
+  font-size: 25px;
+}
+
+.title-box {
+  padding: 50px;
+  border-radius: 25px;
 }

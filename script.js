@@ -9,6 +9,11 @@ let canDraw = true;
 const green = "rgb(79, 255, 77)";
 const red = "rgb(255, 78, 78)";
 const blue = "rgb(22, 150, 255)";
+const orange = "rgb(255, 137, 53)";
+const yellow = "rgb(255, 225, 53)";
+const purple = "rgb(215, 53, 255)";
+const black = "black";
+const erase = "white";
 
 //Default size.
 makeGrid(16);
@@ -38,11 +43,20 @@ for (let color of colorOptions) {
       case `red`:
         currentColor = "red";
         break;
+      case `yellow`:
+        currentColor = "yellow";
+        break;
+      case `orange`:
+        currentColor = "orange";
+        break;
       case `green`:
         currentColor = "green";
         break;
       case `blue`:
         currentColor = "blue";
+        break;
+      case `purple`:
+        currentColor = "purple";
         break;
       case `rainbow`:
         currentColor = "rainbow";
@@ -127,8 +141,7 @@ function removeGrid() {
 }
 
 document.addEventListener("keypress", (event) => {
-  console.log("meow!");
-  canDraw = !canDraw;
+  if (event.key == "a") canDraw = !canDraw;
 });
 
 //Gives each cell an event where it'll be the corresponding "currentColor" color.
@@ -137,23 +150,27 @@ function addCellEvents(cell) {
     if (canDraw === false) return;
     let target = event.target;
 
-    console.log(currentColor);
+    // console.log(currentColor);
 
     if (currentColor == "black") {
-      target.style["background-color"] = "black";
+      target.style["background-color"] = black;
     } else if (currentColor == "red") {
       target.style["background-color"] = red;
     } else if (currentColor == "blue") {
       target.style["background-color"] = blue;
+    } else if (currentColor == "orange") {
+      target.style["background-color"] = orange;
+    } else if (currentColor == "yellow") {
+      target.style["background-color"] = yellow;
     } else if (currentColor == "green") {
       target.style["background-color"] = green;
-    } else if (currentColor == "green") {
-      target.style["background-color"] = green;
+    } else if (currentColor == "purple") {
+      target.style["background-color"] = purple;
     } else if (currentColor == "rainbow") {
       //Random rainbow color
-      const a = randomColor(),
-        b = randomColor(),
-        c = randomColor();
+      const a = randomColor(20, 255),
+        b = randomColor(0, 255),
+        c = randomColor(0, 255);
       const randomRGB = `rgb(${a},${b},${c})`;
 
       target.style["background-color"] = randomRGB;
@@ -179,6 +196,6 @@ function addCellEvents(cell) {
   });
 }
 
-function randomColor() {
-  return Math.random() * (255 - 20) + 20;
+function randomColor(min, max) {
+  return Math.random() * (max - min) + min;
 }

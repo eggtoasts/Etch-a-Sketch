@@ -8,21 +8,39 @@
     <script type="module" src="./script.js"></script>
   </head>
   <body>
-    <div class="main-box">
+    <div class="title-box">
       <h1>Etch-A-Sketch</h1>
-      <input type="range" min="4" max="100" value="16" class="slider" />
+
       <h2 class="grid-size-text">16 x 16</h2>
+
+      <p>Press the "a" key to pause drawing</p>
+      <p>Use slider to adjust grid size</p>
+      <p>Click 🗑️ to reset</p>
+    </div>
+
+    <div class="main-box">
+      <div class="tool-box">
+        <input type="range" min="4" max="100" value="16" class="slider" />
+        <button class="reset-button">🗑️</button>
+      </div>
       <div class="drawing-box">
         <div class="grid-container"></div>
         <div class="color-picker">
-          <div class="color" id="red"></div>
-          <div class="color" id="blue"></div>
-          <div class="color" id="green"></div>
-          <div class="color" id="black"></div>
-          <div class="color" id="rainbow"></div>
-          <div class="color level" id="fade"></div>
-
-          <button class="reset-button">Reset</button>
+          <div class="color-container">
+            <div class="color" id="red"></div>
+            <div class="color" id="orange"></div>
+            <div class="color" id="yellow"></div>
+            <div class="color" id="blue"></div>
+            <div class="color" id="green"></div>
+            <div class="color" id="purple"></div>
+            <div class="color" id="black"></div>
+            <div class="color">
+              <img src="./rainbow-img.jpg" id="rainbow" />
+            </div>
+            <div class="color level">
+              <img src="./gradient-image.jpg" id="fade" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
