@@ -2,8 +2,9 @@ const gridContainer = document.querySelector(".grid-container");
 const sizeSlider = document.querySelector(".slider");
 const sizeOfGridText = document.querySelector(".grid-size-text");
 const colorPicker = document.querySelector(".color-picker");
+const resetButton = document.querySelector(".reset-button");
 
-const canDraw = true;
+let canDraw = true;
 
 const green = "rgb(79, 255, 77)";
 const red = "rgb(255, 78, 78)";
@@ -50,34 +51,41 @@ for (let color of colorOptions) {
         currentColor = "fade";
         break;
     }
-
-    // switch ()
   });
 }
+
+resetButton.addEventListener("click", (event) => {
+  makeGrid(sizeOfGrid);
+});
 
 colorPicker.addEventListener("hover", (event) => {
   console.log(event.target);
 });
 
 //When user moves the slider, the grid size moves to its respective size.
-// "mousedown onclick".split(" ").forEach(function(e){})
-[`mousedown`, `onclick`].forEach((e) => {
+
+[`mousedown`, `click`].forEach((e) => {
   sizeSlider.addEventListener(e, (event) => {
     let target = event.target;
 
-    let sizeInterval = setInterval(() => {
-      console.log("This is" + target.value);
+    if (e == `click`) {
       updateSizeText(target.value);
       makeGrid(target.value);
-    }, 50);
+    } else {
+      let sizeInterval = setInterval(() => {
+        console.log("This is" + target.value);
+        updateSizeText(target.value);
+        makeGrid(target.value);
+      }, 50);
 
-    sizeSlider.addEventListener("mouseup", () => {
-      let target = event.target;
-      console.log(target.value);
+      sizeSlider.addEventListener("mouseup", () => {
+        let target = event.target;
+        console.log(target.value);
 
-      clearInterval(sizeInterval);
-      updateSizeText(target.value);
-    });
+        clearInterval(sizeInterval);
+        updateSizeText(target.value);
+      });
+    }
   });
 });
 
@@ -109,6 +117,7 @@ function makeGrid(size) {
   }
 }
 
+//Removes rows from grid container.
 function removeGrid() {
   const allRows = document.querySelectorAll(".row");
 
@@ -117,8 +126,15 @@ function removeGrid() {
   }
 }
 
+document.addEventListener("keypress", (event) => {
+  console.log("meow!");
+  canDraw = !canDraw;
+});
+
+//Gives each cell an event where it'll be the corresponding "currentColor" color.
 function addCellEvents(cell) {
   cell.addEventListener("mouseover", (event) => {
+    if (canDraw === false) return;
     let target = event.target;
 
     console.log(currentColor);
@@ -134,7 +150,7 @@ function addCellEvents(cell) {
     } else if (currentColor == "green") {
       target.style["background-color"] = green;
     } else if (currentColor == "rainbow") {
-      //random rainbow color!
+      //Random rainbow color
       const a = randomColor(),
         b = randomColor(),
         c = randomColor();
@@ -146,6 +162,7 @@ function addCellEvents(cell) {
 
       let opacity = curr.split(" ")[3];
 
+      //Checks if there's a opacity property or if the cell has not been colored yet
       if (curr == "white" || opacity == null) {
         console.log("CURR IS " + curr + "\n");
         target.style.cssText = ` background-color:rgba(0, 0, 0, ${0.1});`;
@@ -159,8 +176,6 @@ function addCellEvents(cell) {
         }
       }
     }
-
-    // console.log(target);
   });
 }
 
